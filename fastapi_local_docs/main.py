@@ -13,3 +13,21 @@ def create_fastapi_app(root_path='', **kwargs):
     app.include_router(docs.router)
     app.include_router(redoc.router)
     return app
+
+
+def init(app: FastAPI):
+    remove_docs_route(app)
+    app.mount('/_static', StaticFiles(directory=pathlib.Path(__file__).parent / 'static'), name='_static')
+    app.include_router(docs.router)
+    app.include_router(redoc.router)
+    return app
+
+
+def remove_docs_route(app: FastAPI):
+    to_removed = []
+    for route in app.routes:
+        route_path: str = route.path  # noqa
+        if route_path.startswith('/docs') or route_path.startswith('/redoc'):
+            to_removed.append(route)
+    for route in to_removed:
+        app.routes.remove(route)

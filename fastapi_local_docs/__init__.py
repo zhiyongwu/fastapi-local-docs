@@ -1,4 +1,4 @@
-from .main import create_fastapi_app
+from .main import create_fastapi_app,init
 
 
-__all__ = ['create_fastapi_app']
+__all__ = ['create_fastapi_app','init']
