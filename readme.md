@@ -21,6 +21,6 @@ def health():
 
 ## 启动服务
 
-`fastapi dev app.py`
+`fastapi dev demo.py`
 
 访问 [http://localhost:8000/docs](http://localhost:8000/docs)
