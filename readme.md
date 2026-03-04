@@ -1,3 +1,5 @@
+from fastapi import FastAPI
+
 # fastapi swagger 本地化
 
 
@@ -6,13 +8,11 @@
 
 ## 创建 demo.py
 ```python
-from fastapi_local_docs import create_fastapi_app
+import fastapi_local_docs
+from fastapi import FastAPI
 
-app = create_fastapi_app(
-    root_path='/api',
-    version='1.0',
-    title='A FastAPI app'
-)
+app = FastAPI(root_path='/api')
+fastapi_local_docs.init(app)
 
 @app.get('/')
 def health():
