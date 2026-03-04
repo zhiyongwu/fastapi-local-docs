@@ -1,4 +1,3 @@
-from fastapi import FastAPI
 
 # fastapi swagger 本地化
 
